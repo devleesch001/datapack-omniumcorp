@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      "minecraft:sand"
+    ],
+    "#omniumcorp:cobbled_block"
+  ],
+  "result": {
+    "id": "minecraft:sandstone",
+    "count": 1
+  }
+}
