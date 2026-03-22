@@ -1,0 +1,25 @@
+name: Release Datapack
+
+permissions:
+  contents: write
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Zip datapack folder with tag name
+        run: |
+          cd datapack
+          zip -r ../omniumcorp-pack-${{ github.ref_name }}.zip .
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: omniumcorp-pack-${{ github.ref_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

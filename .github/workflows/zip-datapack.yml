@@ -1,0 +1,25 @@
+name: Zip Datapack
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  zip-datapack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Zip datapack folder
+        run: |
+          cd datapack
+          zip -r ../omniumcorp-pack.zip .
+      - name: Upload zipped datapack
+        uses: actions/upload-artifact@v4
+        with:
+          name: omniumcorp-pack-datapack
+          path: omniumcorp-pack.zip
